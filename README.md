@@ -40,7 +40,7 @@ Inside the folder "KodiForVideo", there is a file "settings.prop". You can confi
 You can find the project [here](https://github.com/yuyuki/KodiForVideo).
 
 ## Screenshots
-![Main](http://i.imgur.com/luZF7QP.png = 250px)
-![Playback](http://i.imgur.com/ElX7cGS.png)
-![Source](http://i.imgur.com/JNYZPYV.png)
-![Library](http://i.imgur.com/FjE2k29.png)
+![Main](./Resource/Main.jpg?raw=true)
+![Playback](./Resource/Playback.jpg?raw=true)
+![Source](./Resource/Source.jpg?raw=true)
+![Library](./Resource/Library.jpg?raw=true)
