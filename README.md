@@ -50,7 +50,7 @@ Inside the folder "KodiForVideo", there is a file "settings.prop". You can confi
 - trace: 0 (*disable/enable tracing*)   
 
 ## Download
-[Remote Name](&lt;link&gt;) use "file upload" to get link
+[V 1.0 : KodiForVideo.zip](https://github.com/yuyuki/KodiForVideo/releases/download/1.0/KodiForVideo.zip)
 
 ## Github
 You can find the project [here](https://github.com/yuyuki/KodiForVideo).
