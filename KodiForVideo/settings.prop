@@ -4,4 +4,4 @@ pathForThumbnail: c:\\Users\\Jaufre\\Documents\\kodi
 playerId: none
 port: 80
 status: stop
-trace: 1
+trace: 0
