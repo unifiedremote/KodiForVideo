@@ -331,15 +331,10 @@ function exitKodi()
 end
 
 function shutdownKodi()
-	local dialog = {
-	type = "dialog",
-	title = "Confirmation",
-	text="Confirm shutdown ?",
-	children = {
-		{ type="button", text="Yes", ontap = "shutdownDialogConfirmation"  },
-		{ type="button", text="No" }
-	}};
-	server.update(dialog);
+	local resp = send("System.Shutdown");
+	if(resp == nil or resp.result == nil) then
+		os.execute("shutdown /s /f /t 1");
+	end
 end
 
 function suspendKodi()
@@ -352,13 +347,6 @@ end
 
 function rebootKodi()
 	send("System.Reboot");
-end
-
-actions.shutdownDialogConfirmation = function ()
-	local resp = send("System.Shutdown");
-	if(resp == nil or resp.result == nil) then
-		os.execute("shutdown /s /f /t 1");
-	end
 end
 
 ------------------------------------------------------------------------
