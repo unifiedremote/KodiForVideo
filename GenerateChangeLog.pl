@@ -74,20 +74,24 @@ sub saveTagData{
 }
 
 #####################################################################
-########################### Process #####################################
+########################### Process #################################
 #####################################################################
 
-@array = split(/#COMMIT#/, `git log --pretty=tformat:"#COMMIT#%+d%+cd%+H%n subject:%s%n body:%b%n" --date=short --decorate=short`);
-$pattern = '(.*)\n(\d{4})-(\d{2})-(\d{2})\n(\w*)\n subject: *\((' . join("|", @typeKeys) . ')\) (.*?) : *(.*?)\n body:(.*?)';
+print "Git changelog generator\n";
+print "-----------------------\n";
+
+my $result = `git log --pretty=tformat:"#COMMIT#%+d%+cd%+H%n subject:%s%n body:%b%n" --date=short --decorate=short`;
+@array = split(/#COMMIT#/, $result);
+$pattern = '(.*?)\n(\d{4})-(\d{2})-(\d{2})\n(\w*)\n subject:(' . join("|", @typeKeys) . ') \((.*?)\):(.*?)\n body:(.*?)';
 
 foreach $line (@array){
 	if ($line =~ m/$pattern/i) {
 		# --------------------
 		# Get Group values
 		$tag = getTag($1);
-		
+
 		initTag(\$tag);
-						
+
 		$hash = $5;
 		$type = lc $6;
 		$scope = lc $7;
@@ -103,8 +107,9 @@ foreach $line (@array){
 
 		push(@{$type}, $subjet);
 	}
-	
-	last if $hash eq $stop;
+	if($stop){
+		last if $hash eq $stop;
+	}
 }
 
 saveTagData();
