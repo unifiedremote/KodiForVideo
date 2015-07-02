@@ -52,6 +52,8 @@ Inside the folder "KodiForVideo", there is a file "settings.prop". You can confi
 ## Download
 [V 1.0 : KodiForVideo.zip](https://github.com/yuyuki/KodiForVideo/releases/download/1.0/KodiForVideo.zip)
 
+[Change log](./ChangeLog.md)
+
 ## Github
 You can find the project [here](https://github.com/yuyuki/KodiForVideo).
 
