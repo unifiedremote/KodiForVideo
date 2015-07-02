@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="layout">
+		<xsd:complexType>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element name="row" type="Row" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="tabs" type="Tabs" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="list" type="List" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="grid" type="Grid" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:choice>
+			<xsd:attribute name="onlaunch" type="xsd:string"/>
+			<xsd:attribute name="onvolumeup" type="xsd:string"/>
+			<xsd:attribute name="onvolumedown" type="xsd:string"/>
+			<xsd:attribute name="onresume" type="xsd:string"/>
+			<xsd:attribute name="onpause" type="xsd:string"/>
+			<xsd:attribute name="color" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="Element">
+		<xsd:attribute name="id" type="xsd:string"/>
+		<xsd:attribute name="text" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="Grid">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="row" type="Row" minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Row">
+		<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+			<xsd:element name="grid" minOccurs="0">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Grid">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="button" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Button">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="space" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:attribute name="weight" type="IntPositif"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="label" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Label">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="slider" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Slider">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="toggle" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Toggle">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="text" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Text">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="touch" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Touch">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="list" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="List">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="image" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Image">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="tabs" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Tabs">
+							<xsd:attribute name="weight" type="Weight">
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="weight" type="Weight">
+		</xsd:attribute>
+		<xsd:attribute name="color" type="Color"/>
+	</xsd:complexType>
+	<xsd:complexType name="Tabs">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="tab" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="Row">
+							<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+								<xsd:element name="row" type="Row" minOccurs="0" maxOccurs="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="text" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string"/>
+		<xsd:attribute name="visibility" type="Visibility"/>
+		<xsd:attribute name="index" type="IntPositif"/>
+		<xsd:attribute name="onchange" type="xsd:string"/>
+		<xsd:attribute name="color" type="Color"/>
+	</xsd:complexType>
+	<xsd:complexType name="List">
+		<xsd:sequence maxOccurs="unbounded" minOccurs="0">
+			<xsd:element name="item" minOccurs="0">
+				<xsd:complexType>
+					<xsd:attribute name="text" type="xsd:string"/>
+					<xsd:attribute name="icon" type="Icon"/>
+					<xsd:attribute name="image" type="xsd:string"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string"/>
+		<xsd:attribute name="visibility" type="Visibility"/>
+		<xsd:attribute name="ontap" type="xsd:string"/>
+		<xsd:attribute name="onhold" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="Label">
+		<xsd:complexContent>
+			<xsd:extension base="Element">
+				<xsd:attribute name="visibility" type="Visibility"/>
+				<xsd:attribute name="textalign" type="TextAlign"/>
+				<xsd:attribute name="ontap" type="xsd:string"/>
+				<xsd:attribute name="onhold" type="xsd:string"/>
+				<xsd:attribute name="ondown" type="xsd:string"/>
+				<xsd:attribute name="onup" type="xsd:string"/>
+				<xsd:attribute name="color" type="Color"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="Button">
+		<xsd:complexContent>
+			<xsd:extension base="Label">
+				<xsd:attribute name="icon" type="Icon"/>
+				<xsd:attribute name="image" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="Slider">
+		<xsd:complexContent>
+			<xsd:extension base="Element">
+				<xsd:attribute name="progress" type="IntPositif"/>
+				<xsd:attribute name="progressmax" type="IntPositif"/>
+				<xsd:attribute name="onchange" type="xsd:string"/>
+				<xsd:attribute name="ondone" type="xsd:string"/>
+				<xsd:attribute name="ondown" type="xsd:string"/>
+				<xsd:attribute name="onup" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="Toggle">
+		<xsd:complexContent>
+			<xsd:extension base="Button">
+				<xsd:attribute name="checked" type="xsd:boolean"/>
+				<xsd:attribute name="onchange" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="Text">
+		<xsd:complexContent>
+			<xsd:extension base="Element">
+				<xsd:attribute name="visibility" type="Visibility"/>
+				<xsd:attribute name="textalign" type="TextAlign"/>
+				<xsd:attribute name="hint" type="xsd:string"/>
+				<xsd:attribute name="multiline" type="xsd:boolean"/>
+				<xsd:attribute name="onchange" type="xsd:string"/>
+				<xsd:attribute name="ondone" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="Touch">
+		<xsd:complexContent>
+			<xsd:extension base="Element">
+				<xsd:attribute name="visibility" type="Visibility"/>
+				<xsd:attribute name="image" type="xsd:string"/>
+				<xsd:attribute name="ontap" type="xsd:string"/>
+				<xsd:attribute name="onhold" type="xsd:string"/>
+				<xsd:attribute name="ondoubletap" type="xsd:string"/>
+				<xsd:attribute name="ondown" type="xsd:string"/>
+				<xsd:attribute name="onup" type="xsd:string"/>
+				<xsd:attribute name="ontouchsize" type="xsd:string"/>
+				<xsd:attribute name="ontouchstart" type="xsd:string"/>
+				<xsd:attribute name="ontouchdelta" type="xsd:string"/>
+				<xsd:attribute name="ontouchabs" type="xsd:string"/>
+				<xsd:attribute name="ontouchend" type="xsd:string"/>
+				<xsd:attribute name="onmultitap" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="Image">
+		<xsd:complexContent>
+			<xsd:extension base="Element">
+				<xsd:attribute name="color" type="Color"/>
+				<xsd:attribute name="ontap" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:simpleType name="Color">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="red"/>
+			<xsd:enumeration value="green"/>
+			<xsd:enumeration value="yellow"/>
+			<xsd:enumeration value="blue"/>
+			<xsd:enumeration value="hard"/>
+			<xsd:enumeration value="grey"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Icon">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="left"/>
+			<xsd:enumeration value="right"/>
+			<xsd:enumeration value="up"/>
+			<xsd:enumeration value="down"/>
+			<xsd:enumeration value="play"/>
+			<xsd:enumeration value="pause"/>
+			<xsd:enumeration value="stop"/>
+			<xsd:enumeration value="next"/>
+			<xsd:enumeration value="previous"/>
+			<xsd:enumeration value="ff"/>
+			<xsd:enumeration value="rwd"/>
+			<xsd:enumeration value="record"/>
+			<xsd:enumeration value="vup"/>
+			<xsd:enumeration value="vdown"/>
+			<xsd:enumeration value="vmute"/>
+			<xsd:enumeration value="back"/>
+			<xsd:enumeration value="backspace"/>
+			<xsd:enumeration value="fullscreen"/>
+			<xsd:enumeration value="home"/>
+			<xsd:enumeration value="camera"/>
+			<xsd:enumeration value="list"/>
+			<xsd:enumeration value="select"/>
+			<xsd:enumeration value="arrowdown"/>
+			<xsd:enumeration value="arrowleft"/>
+			<xsd:enumeration value="arrowright"/>
+			<xsd:enumeration value="arrowup"/>
+			<xsd:enumeration value="computer"/>
+			<xsd:enumeration value="config"/>
+			<xsd:enumeration value="favorite"/>
+			<xsd:enumeration value="file"/>
+			<xsd:enumeration value="flash"/>
+			<xsd:enumeration value="folder"/>
+			<xsd:enumeration value="folderopen"/>
+			<xsd:enumeration value="more"/>
+			<xsd:enumeration value="refresh"/>
+			<xsd:enumeration value="playpause"/>
+			<xsd:enumeration value="rotateleft"/>
+			<xsd:enumeration value="rotateright"/>
+			<xsd:enumeration value="zoomin"/>
+			<xsd:enumeration value="zoomout"/>
+			<xsd:enumeration value="zoomnormal"/>
+			<xsd:enumeration value="docclose"/>
+			<xsd:enumeration value="docleft"/>
+			<xsd:enumeration value="docnew"/>
+			<xsd:enumeration value="docright"/>
+			<xsd:enumeration value="docswitch"/>
+			<xsd:enumeration value="window"/>
+			<xsd:enumeration value="search"/>
+			<xsd:enumeration value="web"/>
+			<xsd:enumeration value="windows"/>
+			<xsd:enumeration value="thumbsdown"/>
+			<xsd:enumeration value="thumbsup"/>
+			<xsd:enumeration value="power"/>
+			<xsd:enumeration value="on"/>
+			<xsd:enumeration value="off"/>
+			<xsd:enumeration value="mic"/>
+			<xsd:enumeration value="unlock"/>
+			<xsd:enumeration value="eject"/>
+			<xsd:enumeration value="lock"/>
+			<xsd:enumeration value="sd"/>
+			<xsd:enumeration value="hd"/>
+			<xsd:enumeration value="repeat"/>
+			<xsd:enumeration value="shuffle"/>
+			<xsd:enumeration value="noicon"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IntPositif">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TextAlign">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="left"/>
+			<xsd:enumeration value="center"/>
+			<xsd:enumeration value="right"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Visibility">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="visible"/>
+			<xsd:enumeration value="invisible"/>
+			<xsd:enumeration value="gone"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Weight">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[1-9]|\d{2,}||wrap"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>
