@@ -5,7 +5,7 @@ This project aim to build a custom remote for controling Kodi using [Unified Rem
 The disscusion page is [here](http://community.unifiedremote.com/topic/55/kodi-for-video-1-1). 
 
 ## The Remote
-The remote files are located in the subdiretory [KodiForVideo](./KodiForVideo).
+The remote files are located in the subdirectory  [/KodiForVideo/](./KodiForVideo).
 
 ## Changelog
 The recent changes are listed [here](./ChangeLog.md).
