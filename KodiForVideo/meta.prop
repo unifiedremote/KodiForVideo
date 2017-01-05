@@ -4,4 +4,4 @@ meta.description: Kodi web interface remote for video
 meta.platform: windows
 meta.url: https://github.com/yuyuki/KodiForVideo
 meta.version: 1.0
-meta.tags: audio/video
+meta.tags.category: media
